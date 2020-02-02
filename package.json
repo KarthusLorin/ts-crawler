@@ -1,0 +1,28 @@
+{
+  "name": "ts-crawler",
+  "version": "1.0.0",
+  "description": "用ts撸一个小爬虫",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node ./src/crowler.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarthusLorin/ts-crawler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarthusLorin/ts-crawler/issues"
+  },
+  "homepage": "https://github.com/KarthusLorin/ts-crawler#readme",
+  "devDependencies": {
+    "@types/superagent": "^4.1.4",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "superagent": "^5.2.1"
+  }
+}
