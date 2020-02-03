@@ -63,7 +63,7 @@ class Crowller {
     };
   }
 
-  async generateJsonContent(courseInfo: CourseResult) {
+  generateJsonContent(courseInfo: CourseResult) {
     const filePath = path.resolve(__dirname, "../data/course.json");
     let fileContent: Content = {};
     if (fs.existsSync(filePath)) {
