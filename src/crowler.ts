@@ -14,7 +14,7 @@ class Crowller {
     this.initSpiderProcess();
   }
 
-  async initSpiderProcess() {
+  private async initSpiderProcess() {
     const html = await this.getRawHtml();
     // 调用分析类，传入html，返回分析结果
     const fileContent = this.analyzer.analyze(html, this.filePath);
@@ -22,12 +22,12 @@ class Crowller {
   }
 
   // 发起请求，获取html
-  async getRawHtml() {
+  private async getRawHtml() {
     const result = await superagent.get(this.url);
     return result.text;
   }
 
-  writeFile(content: string) {
+  private writeFile(content: string) {
     fs.writeFileSync(this.filePath, content);
   }
 }
@@ -35,5 +35,5 @@ class Crowller {
 const secret = "secretKey";
 const url = `http://www.dell-lee.com/typescript/demo.html?secret=${secret}`;
 
-const analyzer = new Analyzer();
-const crowler = new Crowller(url, analyzer);
+const analyzer = Analyzer.getInstance();
+new Crowller(url, analyzer);

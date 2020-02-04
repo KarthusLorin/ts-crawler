@@ -18,6 +18,16 @@ interface Content {
 }
 
 export default class Analyzer implements AnalyzerType {
+  private static instance: AnalyzerType;
+
+  static getInstance() {
+    if (!Analyzer.instance) {
+      Analyzer.instance = new Analyzer();
+    }
+
+    return Analyzer.instance;
+  }
+
   private getCourseInfo(html: string) {
     const $ = cheerio.load(html);
     const courseItems = $(".course-item");
@@ -43,7 +53,7 @@ export default class Analyzer implements AnalyzerType {
     };
   }
 
-  generateJsonContent(courseInfo: CourseResult, filePath: string) {
+  private generateJsonContent(courseInfo: CourseResult, filePath: string) {
     let fileContent: Content = {};
     if (fs.existsSync(filePath)) {
       // 当存在文件时，读取内容
@@ -59,4 +69,6 @@ export default class Analyzer implements AnalyzerType {
     const fileContent = this.generateJsonContent(courseInfo, filePath);
     return JSON.stringify(fileContent);
   }
+
+  private constructor() {}
 }
