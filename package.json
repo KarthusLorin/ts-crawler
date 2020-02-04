@@ -4,7 +4,14 @@
   "description": "用ts撸一个小爬虫",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node ./src/crowler.ts"
+    "dev": "concurrently npm run dev:build & npm run dev:start",
+    "dev:build": "tsc -w",
+    "dev:start": "nodemon node ./build/crowller.js"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "data/*"
+    ]
   },
   "repository": {
     "type": "git",
@@ -20,6 +27,8 @@
   "devDependencies": {
     "@types/cheerio": "^0.22.16",
     "@types/superagent": "^4.1.4",
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.2",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
