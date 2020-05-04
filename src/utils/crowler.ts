@@ -7,7 +7,7 @@ export interface AnalyzerType {
 }
 
 class Crowller {
-  private filePath = path.resolve(__dirname, "../data/course.json");
+  private filePath = path.resolve(__dirname, "../../data/course.json");
 
   constructor(private url: string, private analyzer: AnalyzerType) {
     this.initSpiderProcess();
